@@ -36,13 +36,14 @@ export function GroupedBars({ data, series, label, fmt = $m }: {
 export interface WfItem { label: string; value: number; total?: boolean }
 /** Floating-bar waterfall. Totals start at 0; deltas float from the running total. */
 export function WaterfallChart({ items, label, height = 300 }: { items: WfItem[]; label: string; height?: number }) {
-  let run = 0;
-  const data = items.map((it) => {
+  const data: { x: string; range: [number, number]; value: number; total: boolean }[] = [];
+  for (let i = 0, run = 0; i < items.length; i++) {
+    const it = items[i];
     const start = it.total ? 0 : run;
     const end = it.total ? it.value : run + it.value;
     run = end;
-    return { x: it.label, range: [Math.min(start, end), Math.max(start, end)] as [number, number], value: it.value, total: !!it.total };
-  });
+    data.push({ x: it.label, range: [Math.min(start, end), Math.max(start, end)], value: it.value, total: !!it.total });
+  }
   return (
     <ChartFrame label={label} height={height}>
       <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>

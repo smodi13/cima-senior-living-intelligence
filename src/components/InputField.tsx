@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useId, useState } from 'react';
+import { useId, useState } from 'react';
 import { ORIGINAL_INPUTS } from '@/data/inputs';
 import { validateField, type CaseId } from '@/engine';
 import { useModel } from '@/store/model';
@@ -14,11 +14,12 @@ export function InputField({ caseId, def }: { caseId: CaseId; def: FieldDef }) {
   const [err, setErr] = useState<string | null>(null);
   const modified = cur !== orig;
 
-  // Re-sync when the store changes from elsewhere (reset, case switch).
-  useEffect(() => {
+  // Re-sync when the store changes from elsewhere (reset, case switch): adjust state during render.
+  const [seen, setSeen] = useState({ cur, caseId });
+  if (seen.cur !== cur || seen.caseId !== caseId) {
+    setSeen({ cur, caseId });
     if (fromDisplay(text, def.unit) !== cur) { setText(toDisplay(cur, def.unit)); setErr(null); }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cur, caseId]);
+  }
 
   const onChange = (t: string) => {
     setText(t);

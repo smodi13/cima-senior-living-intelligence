@@ -85,7 +85,7 @@ export default function Pricing() {
           </div>
 
           <Callout title="How to read the bid ceiling">
-            The ceiling holds operating assumptions, exit cap, loan terms and the {pct(inp.requiredIRR, 0)} hurdle constant, and scales debt with price. It does not account for lender sizing limits, the downside scenario, or the fact that the Downside case returns no real IRR at any price near the assumed one. Paying at the ceiling leaves no cushion; the memo's decision gates call for sizing price against downside DSCR and exit liquidity.
+            The ceiling holds operating assumptions, exit cap, loan terms and the {pct(inp.requiredIRR, 0)} hurdle constant, and scales debt with price. It does not account for lender sizing limits, the downside scenario, or the fact that the Downside case returns no real IRR at any price near the assumed one. Paying at the ceiling leaves no cushion; the memo&apos;s decision gates call for sizing price against downside DSCR and exit liquidity.
           </Callout>
         </div>
       )}</WithResult>

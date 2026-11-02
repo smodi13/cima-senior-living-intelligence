@@ -93,7 +93,7 @@ export default function Sensitivity() {
               </Table>
               <p className="mt-3 text-xs text-muted">Zero leverage shows DSCR as n/a because there is no debt service. More leverage raises IRR only while NOI covers debt service and the sale covers the payoff; lenders will cap LTV by DSCR, which is not modeled here.</p>
             </Card>
-            <Callout title="Property value, equity value and return are different measures">Gross property value is what a buyer might pay. Net equity proceeds subtract sale costs and the loan. Levered IRR and MOIC measure the sponsor's return on the equity actually invested, including interim cash flows.</Callout>
+            <Callout title="Property value, equity value and return are different measures">Gross property value is what a buyer might pay. Net equity proceeds subtract sale costs and the loan. Levered IRR and MOIC measure the sponsor&apos;s return on the equity actually invested, including interim cash flows.</Callout>
           </div>
         );
       }}</WithResult>
