@@ -9,7 +9,7 @@ const serif = Source_Serif_4({ subsets: ['latin'], variable: '--font-serif-displ
 
 export const metadata: Metadata = {
   title: 'Senior Living Acquisition and Turnaround Intelligence | Independent Case Study',
-  description: 'Independent illustrative private equity underwriting case study of two senior living acquisitions. Not affiliated with or endorsed by Cima Investment Group.',
+  description: 'Independent retrospective scenario analysis of two completed senior living acquisitions. Not affiliated with or endorsed by Cima Investment Group.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

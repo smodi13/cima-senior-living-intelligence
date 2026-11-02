@@ -62,8 +62,8 @@ export const CADENCE: { cadence: string; artifact: string; owner: string }[] = [
 
 export const DOWNLOADS = [
   { file: '/downloads/Cima_Senior_Living_Underwriting_Model.xlsx', label: 'Formula-driven Excel workbook', note: 'Reviewed model of record: 13 sheets incl. Debt Treatment; all derived values are formulas', type: 'XLSX' },
-  { file: '/downloads/Investment_Committee_Memo.pdf', label: 'Investment committee memo', note: 'Reviewed version, 8 pages, 2 November 2026', type: 'PDF' },
-  { file: '/downloads/Executive_Brief.pdf', label: 'Executive brief', note: 'One-page North Texas summary', type: 'PDF' },
+  { file: '/downloads/Investment_Committee_Memo.pdf', label: 'Investment committee memo', note: 'Post-close edition, 8 pages, 2 November 2026', type: 'PDF' },
+  { file: '/downloads/Executive_Brief.pdf', label: 'Executive brief', note: 'One-page retrospective summary, post-close edition', type: 'PDF' },
   { file: '/downloads/100_Day_Value_Creation_Plan.pdf', label: '100-day value creation plan', note: 'Operating playbook, 4 pages', type: 'PDF' },
 ];
 

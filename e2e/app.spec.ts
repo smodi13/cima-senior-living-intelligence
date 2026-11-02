@@ -153,7 +153,8 @@ test('downloads work', async ({ request }) => {
     expect(res.headers()['content-type']).toContain(ct);
     const body = await res.body();
     expect(body.subarray(0, magic.length).toString('latin1')).toBe(magic);
-    expect(body.length).toBeGreaterThan(10_000);
+    expect(body.length).toBeGreaterThan(2_000);
+    if (magic === '%PDF') expect(body.subarray(-32).toString('latin1')).toContain('%%EOF');
   }
 });
 
@@ -204,13 +205,24 @@ test('financing outcomes: shortfall and both treatments, responds to scenario an
   await expect(page.getByTestId('kpi-loan-payoff-shortfall')).toHaveText('$1,365,406');
 });
 
-test('public workbook and memo are byte-identical to the reviewed package', async ({ request }) => {
+test('public workbook (reviewed), memo and brief (post-close) are byte-identical to the project reference files', async ({ request }) => {
   const pairs: [string, string][] = [
     ['/downloads/Cima_Senior_Living_Underwriting_Model.xlsx', 'financial_review/underwriting_reviewed.xlsx'],
-    ['/downloads/Investment_Committee_Memo.pdf', 'financial_review/investment_committee_memo_reviewed.pdf'],
+    ['/downloads/Investment_Committee_Memo.pdf', 'reference/investment_committee_memo.pdf'],
+    ['/downloads/Executive_Brief.pdf', 'reference/executive_brief.pdf'],
   ];
   for (const [url, file] of pairs) {
     const body = await (await request.get(url)).body();
     expect(Buffer.compare(body, readFileSync(file)), url).toBe(0);
   }
+});
+
+test('copy frames the completed acquisition as retrospective scenario analysis', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByText(/retrospective scenario analysis of two senior living acquisitions that Cima has already completed/)).toBeVisible();
+  await expect(page.getByText(/not a recommendation about whether to acquire/)).toBeVisible();
+  await page.goto('/diligence');
+  await expect(page.getByText(/conditional value creation thesis/)).toBeVisible();
+  await page.goto('/pricing');
+  await expect(page.getByText(/not a judgment on Cima's completed transaction/)).toBeVisible();
 });

@@ -1,6 +1,6 @@
 # Senior Living Acquisition and Turnaround Intelligence
 
-Independent, illustrative private equity underwriting case study of two senior living acquisition cases (North Texas portfolio, 10 communities / 359 units; The Reserve at Katy, 82 residences). Built as a work sample for a Private Equity Analyst application.
+Independent, illustrative retrospective scenario analysis of two senior living acquisitions that Cima has already completed (North Texas portfolio, 10 communities / 359 units; The Reserve at Katy, 82 residences). Built as a work sample for a Private Equity Analyst application.
 
 > **Independent illustrative investment analysis. Not affiliated with or endorsed by Cima Investment Group. Actual undisclosed transaction financials are not represented.** Only unit counts and public market benchmarks are sourced facts; all prices, operating economics, loan terms and investor terms are analyst assumptions.
 

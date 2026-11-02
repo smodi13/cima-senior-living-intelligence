@@ -25,7 +25,7 @@ export default function Pricing() {
   return (
     <>
       <PageHeader eyebrow="Module 4" title="Purchase Price Discipline">
-        What can be paid and still earn the required return? The ceiling is the price at which the present value of equity cash flows, discounted at the {pct(inp.requiredIRR, 0)} required levered IRR, equals zero.
+        A hypothetical price-discipline exercise: what price would still earn the required return under these assumptions? It is not a judgment on Cima&apos;s completed transaction, whose price is undisclosed. The ceiling is the price at which the present value of equity cash flows, discounted at the {pct(inp.requiredIRR, 0)} required levered IRR, equals zero.
         <strong> It is conditional on the workbook hurdle and the assumed {pct(inp.ltv, 0)} LTV financing, not a market price.</strong> Showing {CASE_META[m.caseId].short}, {SCENARIO_META[m.scenarioId].name}.
       </PageHeader>
 
@@ -85,7 +85,7 @@ export default function Pricing() {
           </div>
 
           <Callout title="How to read the bid ceiling">
-            The ceiling holds operating assumptions, exit cap, loan terms and the {pct(inp.requiredIRR, 0)} hurdle constant, and scales debt with price. It does not account for lender sizing limits, the downside scenario, or the fact that the Downside case returns no real IRR at any price near the assumed one. Paying at the ceiling leaves no cushion; the memo&apos;s decision gates call for sizing price against downside DSCR and exit liquidity.
+            The ceiling holds operating assumptions, exit cap, loan terms and the {pct(inp.requiredIRR, 0)} hurdle constant, and scales debt with price. It does not account for lender sizing limits, the downside scenario, or the fact that the Downside case returns no real IRR at any price near the assumed one. Paying at the ceiling leaves no cushion. For comparable future acquisitions, the memo&apos;s gates call for sizing price against downside DSCR and exit liquidity; the ceiling is not a value judgment on Cima&apos;s completed purchase.
           </Callout>
         </div>
       )}</WithResult>

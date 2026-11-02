@@ -14,7 +14,7 @@ export default function Turnaround() {
   return (
     <>
       <PageHeader eyebrow="Module 6" title="Operating Turnaround: 100-Day Plan">
-        A proposed, illustrative plan for the North Texas case. <strong>Nothing here is reported property performance, and no initiative is marked complete.</strong> Safety comes first: no initiative may reduce legally required staffing or care quality.
+        A proposed, illustrative plan for the North Texas portfolio, which Cima has already acquired. It does not describe Cima&apos;s actual post-close activities. <strong>Nothing here is reported property performance, and no initiative is marked complete.</strong> Safety comes first: no initiative may reduce legally required staffing or care quality.
       </PageHeader>
       <Callout tone="warn" title="Illustrative, not actual">Every status is &quot;Proposed&quot;. No actual community operating information has been supplied; scorecard values are Unverified by design.</Callout>
 

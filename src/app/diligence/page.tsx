@@ -10,15 +10,15 @@ export default function Diligence() {
   return (
     <>
       <PageHeader eyebrow="Module 7" title="Investment Diligence">
-        The confirmatory request list from the workbook. These are outstanding requests, not claims about the underlying communities, and <strong>no confidential documents have been reviewed</strong>.
+        The request list from the workbook: the data an independent reviewer would need to replace modeled assumptions with actual results, now that the acquisition has closed. These are outstanding requests, not claims about the underlying communities, and <strong>no confidential documents have been reviewed</strong>.
       </PageHeader>
       <dl className="mb-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Kpi label="Open requests" value={String(open.length)} tone="neg" sub={`of ${DILIGENCE.length} total`} />
-        <Kpi label="Critical" value={String(critical.length)} tone="neg" sub="gate the investment decision" />
+        <Kpi label="Critical" value={String(critical.length)} tone="neg" sub="needed to replace modeled inputs" />
         <Kpi label="High" value={String(DILIGENCE.filter((d) => d.priority === 'High').length)} tone="warn" />
         <Kpi label="Received" value={String(DILIGENCE.filter((d) => d.status === 'Received').length)} sub="none; status per workbook" />
       </dl>
-      <Callout tone="neg" title="Unresolved: every item below is Not received">Workflow state is the workbook&apos;s own. The memo&apos;s recommendation is a conditional hold pending these items.</Callout>
+      <Callout tone="neg" title="Unresolved: every item below is Not received">Workflow state is the workbook&apos;s own. The memo&apos;s conclusion is a conditional value creation thesis; these items would be needed to validate it with actual data.</Callout>
 
       <div className="mt-6 space-y-6">
         {DILIGENCE_TOPICS.map((t) => {

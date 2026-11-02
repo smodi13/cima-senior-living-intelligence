@@ -17,7 +17,7 @@ export default function Overview() {
         <Chip tone="brass">Independent case study | 2 November 2026</Chip>
         <h1 className="mt-3 font-serif text-3xl leading-tight sm:text-4xl">Senior Living Acquisition and Turnaround Intelligence</h1>
         <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-slate-200">
-          A formula-driven, five-year underwriting of two senior living acquisition cases, built as an independent private equity analyst work sample. Public facts are limited to unit counts;
+          An independent, formula-driven retrospective scenario analysis of two senior living acquisitions that Cima has already completed (North Texas, announced 29 September 2026; Katy, June 2025), built as a private equity analyst work sample. It is not a recommendation about whether to acquire these assets. Public facts are limited to unit counts;
           every price, rent, cost, loan term and exit value is an illustrative analyst assumption, not an actual Cima transaction financial.
         </p>
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
