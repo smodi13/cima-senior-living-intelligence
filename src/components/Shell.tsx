@@ -15,6 +15,7 @@ export const NAV = [
   { href: '/sensitivity', label: 'Sensitivity Analysis' },
   { href: '/turnaround', label: 'Operating Turnaround' },
   { href: '/diligence', label: 'Investment Diligence' },
+  { href: '/financing', label: 'Financing Outcomes' },
   { href: '/investors', label: 'Investor Economics' },
   { href: '/research', label: 'Investment Research' },
   { href: '/methodology', label: 'Methodology and Downloads' },

@@ -134,7 +134,7 @@ export default function Scenarios() {
           </div>
         );
       }}</WithResult>
-      <div className="mt-6"><Callout title="Interpretation">Downside is a combined stress, not a forecast. Where net exit equity is negative the workbook assumes the sponsor funds the shortfall, so the IRR does not exist and MOIC reads 0.00x because there are no positive distributions. That is a severe capital impairment, not a zero return.</Callout></div>
+      <div className="mt-6"><Callout title="Interpretation">Downside is a combined stress, not a forecast. Where net exit equity is negative the original underwriting assumes the sponsor funds the shortfall (see Financing Outcomes for an illustrative alternative), so the IRR does not exist and MOIC reads 0.00x because there are no positive distributions. That is a severe capital impairment, not a zero return.</Callout></div>
     </>
   );
 }

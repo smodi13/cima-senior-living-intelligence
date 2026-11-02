@@ -42,23 +42,23 @@ export default function Methodology() {
         <Sec t="Exit and maximum bid">
           <F>Exit value = Year 5 NOI / (exit cap + scenario shift)</F>
           <F>Net exit equity = value x (1 - sale costs) - loan balance</F>
-          <p><strong>Maximum bid:</strong> the price at which the present value of equity cash flows, discounted at the required levered IRR, is zero. Debt scales with price at the assumed LTV, so the ceiling is conditional on that return hurdle and financing structure. A test confirms the full model returns exactly the required IRR when priced at the ceiling.</p>
+          <p><strong>Exit financing treatments:</strong> the default sponsor-supported payoff funds any shortfall; the limited-recourse illustration floors sale equity at zero (see Financing Outcomes). <strong>Maximum bid:</strong> the price at which the present value of equity cash flows, discounted at the required levered IRR, is zero. Debt scales with price at the assumed LTV, so the ceiling is conditional on that return hurdle and financing structure. A test confirms the full model returns exactly the required IRR when priced at the ceiling.</p>
         </Sec>
       </div>
 
       <Card className="mt-6" title="Reconciliation to Excel">
         <div className="space-y-2 text-sm leading-relaxed">
-          <p>The automated suite compares the engine against values cached in the workbook at 1e-9 relative tolerance: all 21 Dashboard fields for each of the six cases; all 29 Forecast columns for each of the 30 case-years; the 49-cell exit cap by occupancy grid; and all 22 LP waterfall columns across five years plus the waterfall summary block. Unrounded values are used internally; only displays are rounded.</p>
+          <p>The reviewed workbook is the model of record. The automated suite compares the engine against values cached in it at 1e-9 relative tolerance (with a one micro-dollar floor for cells that are exactly zero): all 21 Dashboard fields for each of the six cases; all 29 Forecast columns for each of the 30 case-years; the 49-cell exit cap by occupancy grid; all 24 LP waterfall columns (A to X, including the GP co-investment residual and promote columns) across five years plus the waterfall summary block; and the Debt Treatment sheet for all six cases. The six acquisition cases are unchanged from the previous workbook version. Unrounded values are used internally; only displays are rounded.</p>
           <p>Special-condition tests cover zero debt, negative cash flow, exit value below payoff, invalid cap rates, occupancy and amortization, very low DSCR, undefined IRR and extreme valid sweeps.</p>
-          <p>The workbook was not modified. Open items for investment review are listed below; the engineering side has not changed any assumption.</p>
+          <p>Engineering has not modified the workbook or any assumption. Methodology notes and review items are listed below.</p>
         </div>
       </Card>
 
-      <Card className="mt-6" title="Items for investment review" subtitle="Discrepancies, workbook behaviors and proposed enhancements. None changes the underwriting.">
+      <Card className="mt-6" title="Methodology review notes" subtitle="Resolved by the 2 November 2026 methodology review, plus workbook behaviors and proposed enhancements.">
         <ul className="divide-y divide-line">
           {REVIEW_ITEMS.map((i) => (
             <li key={i.id} className="py-3 first:pt-0 last:pb-0">
-              <p className="text-sm font-semibold text-navy-900"><span className="mr-2 text-brass">{i.id}</span>{i.title}</p>
+              <p className="text-sm font-semibold text-navy-900"><span className="mr-2 text-brass">{i.id}</span>{i.title} <Chip tone={i.status === 'Resolved by methodology review' ? 'pos' : 'neutral'}>{i.status}</Chip></p>
               <p className="mt-1 text-sm text-ink">{i.detail}</p>
               <p className="mt-1 text-sm text-muted"><strong>Handling:</strong> {i.handling}</p>
             </li>
@@ -68,7 +68,7 @@ export default function Methodology() {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <Callout tone="warn" title="Major model limitations">
-          Annual periods only. No property-level lease schedules, tax reassessment, clinical shift-level productivity, tax depreciation or monthly covenant tests. Exit uses Year 5 NOI at an assumed cap rate. Loan terms are not a lender quote. A shortfall at sale is a sponsor funding requirement, not a non-recourse outcome.
+          Annual periods only. No property-level lease schedules, tax reassessment, clinical shift-level productivity, tax depreciation or monthly covenant tests. Exit uses Year 5 NOI at an assumed cap rate. Loan terms are not a lender quote. Exit payoff shortfalls are shown under two illustrative conventions (sponsor-supported and limited-recourse exit-only); neither is Cima&apos;s loan terms.
         </Callout>
         <Card title="Disclaimer"><Disclaimer /></Card>
       </div>

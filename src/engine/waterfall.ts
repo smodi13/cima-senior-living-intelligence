@@ -4,7 +4,8 @@ import type { DealResult } from './types';
 export interface WaterfallYear {
   year: number; projectCF: number; openLP: number; openGP: number; call: number; lpContrib: number; gpContrib: number;
   cash: number; lpPrefAccrual: number; rocLP: number; rocGP: number; lpPrefPaid: number; residualLP: number;
-  residualGP: number; lpTotal: number; gpTotal: number; endLP: number; endGP: number; unpaidPref: number;
+  /** Residual to GP = gpCoInvestResidual + gpPromote (workbook N = W + X) */
+  residualGP: number; gpCoInvestResidual: number; gpPromote: number; lpTotal: number; gpTotal: number; endLP: number; endGP: number; unpaidPref: number;
   reconciliation: number; lpNet: number; gpNet: number;
 }
 export interface WaterfallResult {
@@ -12,7 +13,10 @@ export interface WaterfallResult {
   lpIRR: number | null; gpIRR: number | null; residualCash: number; lpCashflows: number[]; gpCashflows: number[];
 }
 
-/** Exact port of workbook "LP Waterfall" rows 6-10 and 15-21 (return of capital, then LP pref, then promote split). */
+/**
+ * Exact port of the REVIEWED workbook "LP Waterfall" rows 6-10 and 15-21: capital returned first (pro rata), then the LP-only
+ * preferred return, then the residual. Residual W = GP co-invest share, X = promote on the LP share, N = W + X, M = residual - N.
+ */
 export function computeWaterfall(deal: DealResult, p: { lpPref: number; gpPromote: number; lpShare: number }): WaterfallResult {
   const years: WaterfallYear[] = [];
   let prev: WaterfallYear | null = null;
@@ -32,13 +36,15 @@ export function computeWaterfall(deal: DealResult, p: { lpPref: number; gpPromot
     const priorUnpaid = idx === 0 ? 0 : prev!.unpaidPref;
     const lpPrefPaid = Math.min(Math.max(0, cash - rocLP - rocGP), lpPrefAccrual + priorUnpaid);
     const resid = Math.max(0, cash - rocLP - rocGP - lpPrefPaid);
-    const residualLP = resid * (1 - p.gpPromote);
-    const residualGP = resid * p.gpPromote;
+    const gpCoInvestResidual = resid * (1 - p.lpShare); // W
+    const gpPromote = resid * p.lpShare * p.gpPromote; // X
+    const residualGP = gpCoInvestResidual + gpPromote; // N
+    const residualLP = resid - residualGP; // M
     const lpTotal = rocLP + lpPrefPaid + residualLP;
     const gpTotal = rocGP + residualGP;
     const w: WaterfallYear = {
       year: f.year, projectCF, openLP, openGP, call, lpContrib, gpContrib, cash, lpPrefAccrual, rocLP, rocGP, lpPrefPaid,
-      residualLP, residualGP, lpTotal, gpTotal, endLP: Math.max(0, openLP + lpContrib - rocLP),
+      residualLP, residualGP, gpCoInvestResidual, gpPromote, lpTotal, gpTotal, endLP: Math.max(0, openLP + lpContrib - rocLP),
       endGP: Math.max(0, openGP + gpContrib - rocGP), unpaidPref: Math.max(0, lpPrefAccrual + priorUnpaid - lpPrefPaid),
       reconciliation: projectCF + call - (lpTotal + gpTotal), lpNet: lpTotal - lpContrib, gpNet: gpTotal - gpContrib,
     };

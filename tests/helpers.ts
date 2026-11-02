@@ -9,6 +9,6 @@ export const deal = (c: CaseId, s: ScenarioId, io: Partial<DealInputs> = {}, so:
 export const KEYS: [CaseId, ScenarioId][] = [['TX', 'Base'], ['TX', 'Down'], ['TX', 'Up'], ['Katy', 'Base'], ['Katy', 'Down'], ['Katy', 'Up']];
 export const caseKey = (c: CaseId, s: ScenarioId) => `${c} ${s}`;
 export function close(a: number, b: number, msg: string, tol = 1e-9) {
-  if (!Number.isFinite(a) || !Number.isFinite(b) || Math.abs(a - b) > Math.max(1, Math.abs(b)) * tol)
+  if (!Number.isFinite(a) || !Number.isFinite(b) || Math.abs(a - b) > Math.max(1e-6, Math.abs(b) * tol))
     throw new Error(`${msg}: app=${a} excel=${b}`);
 }

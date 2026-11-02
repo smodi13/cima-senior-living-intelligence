@@ -45,7 +45,7 @@ export default function Overview() {
                   sub={r.leveredIRR === null ? 'Not meaningful: equity never recovered' : `${r.clearsHurdle ? 'Clears' : 'Below'} ${pct(hurdle)} required IRR`} />
                 <Kpi label="Equity MOIC" value={mult(r.moic)} sub={r.leveredIRR === null ? 'No positive distributions' : 'Workbook definition'} />
                 <Kpi label="Max supportable bid" value={usdM(r.maxBid)} sub={r.maxBid === null ? '' : `${usd(r.maxBidPerUnit)} per unit`} />
-                <Kpi label="Minimum DSCR" value={mult(r.minDSCR)} tone={r.minDSCR !== null && r.minDSCR < inp.minDSCR ? 'neg' : 'neutral'} sub={`Analyst threshold ${mult(inp.minDSCR)}`} />
+                <Kpi label="Minimum DSCR" value={mult(r.minDSCR)} tone={r.minDSCR !== null && r.minDSCR < inp.minDSCR ? 'neg' : 'neutral'} sub={`Analyst screen ${mult(inp.minDSCR)}, not a covenant`} />
                 <Kpi label="Acquisition price" value={usdM(r.acquisition)} sub={`${usd(r.pricePerUnit)} per unit (illustrative)`} />
                 <Kpi label="Initial equity" value={usdM(r.equity)} sub={`${usdM(r.loan)} debt at ${pct(inp.ltv, 0)} LTV`} />
                 <Kpi label="Year 5 NOI" value={usdM(r.year5NOI, 2)} sub={`Year 1: ${usdM(r.year1NOI, 2)}`} />
@@ -55,7 +55,7 @@ export default function Overview() {
 
             {r.exitShortfall && (
               <Callout tone="neg" title="Exit value does not cover the loan payoff">
-                Net sale proceeds of {usd(r.netSaleProceeds)} fall short of the {usd(r.loanPayoff)} loan by {usd(-r.netExitEquity)}. The workbook treats this as a sponsor funding requirement (it does not model non-recourse limits, default or workout), so Year 5 equity cash flow is negative and no real IRR exists.
+                Net sale proceeds of {usd(r.netSaleProceeds)} fall short of the {usd(r.loanPayoff)} loan by {usd(-r.netExitEquity)}. The original underwriting treats this as a sponsor funding requirement, so Year 5 equity cash flow is negative and no real IRR exists. An illustrative limited-recourse alternative is on the Financing Outcomes page; neither represents Cima&apos;s actual loan terms.
               </Callout>
             )}
 

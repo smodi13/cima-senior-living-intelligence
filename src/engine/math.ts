@@ -10,6 +10,15 @@ export function npv(rate: number, flows: number[]): number {
   return flows.reduce((s, c, i) => s + c / Math.pow(1 + rate, i), 0);
 }
 
+/** Workbook MOIC (Dashboard column O): positive Year 1-5 flows / (Year 0 equity + later negative flows treated as extra equity). */
+export function workbookMoic(cashflows: number[]): number {
+  const later = cashflows.slice(1);
+  const positives = later.filter((n) => n > 0).reduce((a, b) => a + b, 0);
+  const negatives = later.filter((n) => n < 0).reduce((a, b) => a + b, 0);
+  const invested = -cashflows[0] - negatives;
+  return invested > 0 ? positives / invested : 0;
+}
+
 export function signChanges(flows: number[]): number {
   let n = 0;
   let prev = 0;

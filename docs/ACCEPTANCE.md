@@ -1,18 +1,16 @@
-# Acceptance checklist
+# Acceptance checklist (reviewed model)
 
-Status reflects commands actually run locally (see README). Production items are verified separately after deployment (see bottom).
+Evidence for each item is an automated test that was run; see `tests/` and `e2e/`.
 
 | Item | Evidence |
 |---|---|
-| Every workbook scenario reconciles | `tests/reconciliation.test.ts` (6 cases x 21 fields; 30 case-years x 29 columns) |
-| Derived outputs are formula-derived | Engine only; data modules hold inputs and text |
-| No unauthorized assumptions added | Inputs read from `model-data.json`; only validation ranges added (UI guard rails) |
-| Edit price / occupancy / financing / exit cap recalculates | `tests/edge-cases.test.ts` + e2e "editing assumptions" |
-| Max bid recalculates and solves the hurdle | IRR at max bid = 15% test |
-| Reset restores originals | e2e reset tests |
-| Scenario switching, charts update | e2e overview test |
-| Diligence/research load | e2e content test |
-| Downloads (xlsx, 3 PDFs) | e2e download tests (status, content type, magic bytes) |
-| All routes, desktop and mobile | e2e route tests, both projects |
-| Accessibility (axe wcag2a/aa) | e2e a11y per route |
-| Typecheck, tests, build | `npm run typecheck`, `npm test`, `npm run build` |
+| Six acquisition cases reconcile to the reviewed workbook | `tests/reconciliation.test.ts` (21 fields x 6; 29 columns x 30 case-years); baselines verified identical to previous workbook |
+| LP waterfall reconciles (24 columns, LP/GP IRR) | waterfall parity tests vs `tests/waterfall-baseline.json` (from reviewed workbook) |
+| GP residual = co-invest residual + promote; distributions = cash | invariant tests across all cases |
+| Debt Treatment (6 cases) and alternative exit cash flow | `tests/debt-treatment-baseline.json` parity; implied cure = shortfall |
+| LP/GP IRR approx. 17.5% / 31.3% from the engine | engine test and e2e (Investor Economics) |
+| Editing price / occupancy / financing / exit cap recalculates | `tests/edge-cases.test.ts`, e2e editing test |
+| Reset restores originals; scenario switching; charts update | e2e |
+| Downloads are byte-identical to the reviewed package | e2e byte comparison |
+| All routes, desktop and mobile (412px, 360px), axe WCAG 2 A/AA | e2e per route |
+| TypeScript, lint, tests, production build | `npm run typecheck`, `npm run lint`, `npm test`, `npm run build` |

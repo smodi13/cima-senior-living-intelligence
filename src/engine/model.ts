@@ -1,4 +1,4 @@
-import { clamp, excelPMT, irr, signChanges } from './math';
+import { clamp, excelPMT, irr, signChanges, workbookMoic } from './math';
 import { ModelInputError, validateInputs } from './validation';
 import type { DealInputs, DealResult, ForecastYear, ScenarioParams } from './types';
 
@@ -70,11 +70,7 @@ export function computeDeal(i: DealInputs, s: ScenarioParams): DealResult {
   if (leveredIRR === null) irrNote = 'No real IRR exists: the equity cash flows never turn positive after the initial investment.';
   else if (signChanges(cashflows) > 1) irrNote = 'Multiple sign changes in equity cash flows: IRR may not be unique.';
 
-  // Workbook MOIC: positive flows / (initial equity + later negative flows treated as extra equity)
-  const positives = cashflows.slice(1).filter((n) => n > 0).reduce((a, b) => a + b, 0);
-  const negatives = cashflows.slice(1).filter((n) => n < 0).reduce((a, b) => a + b, 0);
-  const invested = equity - negatives;
-  const moic = invested > 0 ? positives / invested : 0;
+  const moic = workbookMoic(cashflows);
 
   // Maximum bid: price at which PV of equity cash flows at the required IRR equals zero.
   // Loan, interest and amortization scale linearly with price, so the workbook expresses the debt

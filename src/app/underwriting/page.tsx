@@ -114,7 +114,7 @@ export default function Underwriting() {
               ))}
             </Table>
           </Card>
-          <Callout title="Reading this model">Hold period is fixed at five annual periods to match the Excel workbook. A shortfall at sale is treated as a sponsor funding requirement, as in the workbook. See Methodology for all stated limitations.</Callout>
+          <Callout title="Reading this model">Hold period is fixed at five annual periods to match the Excel workbook. By default a shortfall at sale is treated as a sponsor funding requirement, as in the original underwriting; an illustrative limited-recourse alternative is on the Financing Outcomes page. See Methodology for all stated limitations.</Callout>
         </div>
       )}</WithResult>
     </>

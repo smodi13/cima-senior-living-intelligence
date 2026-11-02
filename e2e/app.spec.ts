@@ -1,10 +1,11 @@
 import { expect, test, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { readFileSync } from 'node:fs';
 
 const ROUTES = [
   ['/', 'Senior Living Acquisition and Turnaround Intelligence'], ['/underwriting', 'Acquisition Underwriting'], ['/scenarios', 'Scenario Analysis'],
   ['/pricing', 'Purchase Price Discipline'], ['/sensitivity', 'Sensitivity Analysis'], ['/turnaround', 'Operating Turnaround'], ['/diligence', 'Investment Diligence'],
-  ['/investors', 'Investor Economics'], ['/research', 'Investment Research'], ['/methodology', 'Methodology and Downloads'],
+  ['/financing', 'Financing Outcomes'], ['/investors', 'Investor Economics'], ['/research', 'Investment Research'], ['/methodology', 'Methodology and Downloads'],
 ] as const;
 
 function watchConsole(page: Page) {
@@ -176,9 +177,40 @@ test('primary navigation reaches every module', async ({ page, isMobile }) => {
   await page.goto('/');
   for (const [path, heading] of ROUTES.slice(1)) {
     if (isMobile) await page.getByRole('button', { name: 'Menu' }).click();
-    const label = ({ '/underwriting': 'Acquisition Underwriting', '/scenarios': 'Scenario Analysis', '/pricing': 'Purchase Price Discipline', '/sensitivity': 'Sensitivity Analysis', '/turnaround': 'Operating Turnaround', '/diligence': 'Investment Diligence', '/investors': 'Investor Economics', '/research': 'Investment Research', '/methodology': 'Methodology and Downloads' } as Record<string, string>)[path];
+    const label = ({ '/underwriting': 'Acquisition Underwriting', '/scenarios': 'Scenario Analysis', '/pricing': 'Purchase Price Discipline', '/sensitivity': 'Sensitivity Analysis', '/turnaround': 'Operating Turnaround', '/diligence': 'Investment Diligence', '/financing': 'Financing Outcomes', '/investors': 'Investor Economics', '/research': 'Investment Research', '/methodology': 'Methodology and Downloads' } as Record<string, string>)[path];
     await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: label }).click();
     await expect(page).toHaveURL(path);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(heading);
+  }
+});
+
+test('investor economics shows reviewed waterfall: LP/GP IRR from the engine, GP residual split', async ({ page }) => {
+  await page.goto('/investors');
+  await expect(page.getByText('LP IRR 17.5%')).toBeVisible();
+  await expect(page.getByText('GP IRR 31.3%')).toBeVisible();
+  await expect(page.getByRole('columnheader', { name: 'GP co-invest residual' })).toBeVisible();
+  await expect(page.getByRole('columnheader', { name: 'GP promote on LP residual' })).toBeVisible();
+  await expect(page.getByText(/72\.0% to LPs and 28\.0% to the GP/)).toBeVisible();
+});
+
+test('financing outcomes: shortfall and both treatments, responds to scenario and assumptions', async ({ page }) => {
+  await page.goto('/financing');
+  await expect(page.getByTestId('kpi-loan-payoff-shortfall')).toHaveText('$0');
+  await page.getByRole('radio', { name: 'Downside' }).click();
+  await expect(page.getByTestId('kpi-loan-payoff-shortfall')).toHaveText('$4,750,480');
+  await expect(page.getByRole('table', { name: 'Returns by financing treatment' })).toContainText('NM');
+  await expect(page.getByText('Neither represents Cima')).toBeVisible();
+  await page.getByRole('radio', { name: 'Katy' }).click();
+  await expect(page.getByTestId('kpi-loan-payoff-shortfall')).toHaveText('$1,365,406');
+});
+
+test('public workbook and memo are byte-identical to the reviewed package', async ({ request }) => {
+  const pairs: [string, string][] = [
+    ['/downloads/Cima_Senior_Living_Underwriting_Model.xlsx', 'financial_review/underwriting_reviewed.xlsx'],
+    ['/downloads/Investment_Committee_Memo.pdf', 'financial_review/investment_committee_memo_reviewed.pdf'],
+  ];
+  for (const [url, file] of pairs) {
+    const body = await (await request.get(url)).body();
+    expect(Buffer.compare(body, readFileSync(file)), url).toBe(0);
   }
 });
