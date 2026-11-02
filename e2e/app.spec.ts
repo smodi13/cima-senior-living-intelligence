@@ -134,10 +134,11 @@ test('workbook-derived content loads: diligence, plan, sources', async ({ page }
   await page.goto('/diligence');
   await expect(page.getByText('Not received').first()).toBeVisible();
   await page.goto('/turnaround');
-  await expect(page.getByRole('row')).toHaveCount(14, { timeout: 5000 }).catch(() => {}); // header + 12 plan rows + cadence/scorecard tables
-  await expect(page.getByText('Review licensed staffing, medication, falls and survey findings')).toBeVisible();
+  await expect(page.getByText('Review licensed staffing, medication, falls and survey findings').filter({ visible: true })).toBeVisible();
   await page.goto('/research');
   await expect(page.getByRole('link', { name: /Open source S01/ })).toHaveAttribute('href', /cimainvest\.com/);
+  await expect(page.getByRole('link', { name: /Open source S05/ })).toHaveAttribute('href', 'https://www.nic.org/news-press/senior-housing-occupancy-nears-record-high-as-majority-of-markets-surpass-90/');
+  await expect(page.getByRole('link', { name: /Open source S09/ })).toHaveAttribute('href', 'https://www.cbre.com/insights/reports/us-senior-housing-and-care-investor-survey-h1-2026');
 });
 
 test('downloads work', async ({ request }) => {

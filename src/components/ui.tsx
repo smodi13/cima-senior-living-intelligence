@@ -60,6 +60,8 @@ export function Callout({ title, children, tone = 'neutral' }: { title: string; 
 
 export function Table({ head, children, caption, className = '' }: { head: ReactNode[]; children: ReactNode; caption: string; className?: string }) {
   return (
+    <>
+    <p className="mb-1 text-[11px] text-muted md:hidden" aria-hidden="true">Swipe sideways to see all columns</p>
     <div className="table-scroll" tabIndex={0} role="region" aria-label={caption}>
       <table className={`w-full min-w-max border-collapse text-sm ${className}`}>
         <caption className="sr-only">{caption}</caption>
@@ -73,6 +75,7 @@ export function Table({ head, children, caption, className = '' }: { head: React
         <tbody>{children}</tbody>
       </table>
     </div>
+    </>
   );
 }
 export const Td = ({ children, left, bold, tone }: { children: ReactNode; left?: boolean; bold?: boolean; tone?: Tone }) => (

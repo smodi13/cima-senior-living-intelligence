@@ -4,7 +4,7 @@ import { CASE_META, ORIGINAL_SCENARIOS, SCENARIO_META } from '@/data/inputs';
 import { CASES, SCENARIOS, computeDeal, exitEquityBridge, type ScenarioId, type ScenarioParams } from '@/engine';
 import { useModel } from '@/store/model';
 import { Callout, Card, PageHeader, Table, Td, Tr } from '@/components/ui';
-import { SCEN_COLOR, WaterfallChart } from '@/components/charts';
+import { WaterfallChart } from '@/components/charts';
 import { WithResult } from '@/components/Guard';
 import { mult, pct, usd, usdM } from '@/lib-fmt';
 
@@ -120,7 +120,7 @@ export default function Scenarios() {
               {(['Down', 'Up'] as const).map((s) => {
                 const b = exitEquityBridge(inp, m.scenario(s));
                 return (
-                  <Card key={s} title={`Drivers of Year 5 net exit equity: ${SCENARIO_META[s].name}`} subtitle="From no-stress to scenario, applied in the order shown" right={<span className="inline-block h-3 w-3 rounded-sm" style={{ background: SCEN_COLOR[s] }} aria-hidden />}>
+                  <Card key={s} title={`Drivers of Year 5 net exit equity: ${SCENARIO_META[s].name}`} subtitle="From no-stress to scenario, applied in the order shown">
                     <WaterfallChart label={`Net exit equity drivers, ${SCENARIO_META[s].name}`} height={250} items={[
                       { label: 'No-stress', value: b.start, total: true },
                       ...b.steps.filter((x) => Math.abs(x.delta) > 0.5).map((x) => ({ label: x.label, value: x.delta })),
