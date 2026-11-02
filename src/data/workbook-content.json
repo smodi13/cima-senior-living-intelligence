@@ -1,0 +1,414 @@
+{
+ "diligence": [
+  {
+   "priority": "Critical",
+   "area": "Financial",
+   "request": "Trailing 24 months monthly P&L by property and full general ledger",
+   "rationale": "Normalize NOI and labor addbacks",
+   "owner": "Investment team",
+   "status": "Not received"
+  },
+  {
+   "priority": "Critical",
+   "area": "Occupancy",
+   "request": "Unit rent roll, private-pay census, concessions, trailing move-ins/outs",
+   "rationale": "True economic occupancy and rate quality",
+   "owner": "Operations",
+   "status": "Not received"
+  },
+  {
+   "priority": "Critical",
+   "area": "Clinical",
+   "request": "Survey deficiencies, licenses, staffing coverage, citations and care plans",
+   "rationale": "Resident safety and operating license",
+   "owner": "Clinical/legal",
+   "status": "Not received"
+  },
+  {
+   "priority": "Critical",
+   "area": "Debt",
+   "request": "Signed term sheet, DSCR covenant, reserves, cash sweeps, recourse",
+   "rationale": "Availability and downside risk",
+   "owner": "Financing",
+   "status": "Not received"
+  },
+  {
+   "priority": "Critical",
+   "area": "Labor",
+   "request": "Staff schedule, agency hours, overtime and acuity ratios",
+   "rationale": "Ability to deliver safe care at modeled costs",
+   "owner": "Operations / HR",
+   "status": "Not received"
+  },
+  {
+   "priority": "Critical",
+   "area": "Capex",
+   "request": "PCA, roof/HVAC condition, unit turns, contractor bids",
+   "rationale": "Risk-adjusted renovation and reserve budget",
+   "owner": "Construction",
+   "status": "Not received"
+  },
+  {
+   "priority": "High",
+   "area": "Tax/insurance",
+   "request": "Property-level tax bills, reassessment, liability loss runs",
+   "rationale": "Unmodeled cost reset",
+   "owner": "Tax/insurance",
+   "status": "Not received"
+  },
+  {
+   "priority": "High",
+   "area": "Market",
+   "request": "Local 80+ demos, comps, competing licenses, rate shops",
+   "rationale": "Stabilized occupancy validation",
+   "owner": "Research",
+   "status": "Not received"
+  },
+  {
+   "priority": "High",
+   "area": "Portfolio-level",
+   "request": "359-unit count and cash flow split across all 10 communities",
+   "rationale": "Avoid false aggregation / concentration",
+   "owner": "Investments",
+   "status": "Not received"
+  },
+  {
+   "priority": "High",
+   "area": "Legal",
+   "request": "Title, zoning, regulatory files, management and resident contracts",
+   "rationale": "Closing obligations and hidden liabilities",
+   "owner": "Legal",
+   "status": "Not received"
+  },
+  {
+   "priority": "High",
+   "area": "LP / governance",
+   "request": "SPV waterfall, pref, catch-up, fees, capital calls, governance rights",
+   "rationale": "Investor reporting and compliance",
+   "owner": "Investor relations",
+   "status": "Not received"
+  }
+ ],
+ "plan": [
+  {
+   "days": "0-15",
+   "workstream": "Care safety",
+   "initiative": "Review licensed staffing, medication, falls and survey findings",
+   "owner": "Regional clinical",
+   "kpi": "All high-severity items reviewed",
+   "gate": "Clinical sign-off",
+   "status": "Proposed"
+  },
+  {
+   "days": "0-15",
+   "workstream": "Financial",
+   "initiative": "Reconcile GL, deposits, aged AR and census",
+   "owner": "Controller",
+   "kpi": "No material unexplained cash variance",
+   "gate": "CFO sign-off",
+   "status": "Proposed"
+  },
+  {
+   "days": "0-30",
+   "workstream": "Staffing",
+   "initiative": "Build shift roster, resident acuity and agency usage baseline",
+   "owner": "Operations + nursing",
+   "kpi": "No uncovered mandated shift",
+   "gate": "Clinical sign-off",
+   "status": "Proposed"
+  },
+  {
+   "days": "15-30",
+   "workstream": "Sales",
+   "initiative": "Audit referral funnel and lead response times",
+   "owner": "Sales Director",
+   "kpi": "Tours, lead-to-tour, move-in conversions",
+   "gate": "Baseline established",
+   "status": "Proposed"
+  },
+  {
+   "days": "15-45",
+   "workstream": "Unit readiness",
+   "initiative": "Inspect vacancies and scope unit turns",
+   "owner": "Facilities",
+   "kpi": "Vacant ready units and rehab cost/unit",
+   "gate": "Capex approval",
+   "status": "Proposed"
+  },
+  {
+   "days": "15-45",
+   "workstream": "Competitive pricing",
+   "initiative": "Survey local competitive rents, services, concessions",
+   "owner": "Acquisitions",
+   "kpi": "At least five relevant local comps",
+   "gate": "Research approval",
+   "status": "Proposed"
+  },
+  {
+   "days": "30-60",
+   "workstream": "Revenue accuracy",
+   "initiative": "Confirm billable care services, resident consents and contracted fees",
+   "owner": "Finance/Clinical",
+   "kpi": "Unbilled approved care fees",
+   "gate": "Legal/clinical sign-off",
+   "status": "Proposed"
+  },
+  {
+   "days": "30-75",
+   "workstream": "Workforce",
+   "initiative": "Reduce avoidable agency use and overtime without unsafe coverage reductions",
+   "owner": "Operations / HR",
+   "kpi": "Agency share and care hours",
+   "gate": "Clinical review",
+   "status": "Proposed"
+  },
+  {
+   "days": "30-75",
+   "workstream": "Experience",
+   "initiative": "Improve family communications, dining and activities",
+   "owner": "Executive Director",
+   "kpi": "Complaints and family satisfaction",
+   "gate": "Resident care review",
+   "status": "Proposed"
+  },
+  {
+   "days": "45-90",
+   "workstream": "Capital deployment",
+   "initiative": "Stage renovation of vacant units using approved bids",
+   "owner": "Facilities",
+   "kpi": "Completed turns / approved budget",
+   "gate": "Investment committee",
+   "status": "Proposed"
+  },
+  {
+   "days": "60-100",
+   "workstream": "Performance",
+   "initiative": "Weekly occupancy, DSCR, labor, NOI and incident scorecard",
+   "owner": "Asset Management",
+   "kpi": "100% weekly on-time reports",
+   "gate": "CFO review",
+   "status": "Proposed"
+  },
+  {
+   "days": "90-100",
+   "workstream": "Re-underwriting",
+   "initiative": "Update investment view from first 90 days, revise risk limits",
+   "owner": "Investment team",
+   "kpi": "New T3 actual / forward forecast",
+   "gate": "IC follow-up",
+   "status": "Proposed"
+  }
+ ],
+ "inputMeta": {
+  "6": {
+   "label": "Properties",
+   "status": "FACT",
+   "rationale": "North TX S01; Katy single community",
+   "ref": "S01"
+  },
+  "7": {
+   "label": "Residential units",
+   "status": "FACT",
+   "rationale": "Cima press announcements S02 / S03",
+   "ref": "S02/S03"
+  },
+  "8": {
+   "label": "Acquisition starting occupancy",
+   "status": "ASSUMPTION",
+   "rationale": "Scenario only, not actual property census",
+   "ref": "A01"
+  },
+  "9": {
+   "label": "Stabilized occupancy",
+   "status": "ASSUMPTION",
+   "rationale": "Stretch target subject to local competition",
+   "ref": "A02"
+  },
+  "10": {
+   "label": "Months to stabilized occupancy",
+   "status": "ASSUMPTION",
+   "rationale": "Annual forecast averages the ramp",
+   "ref": "A03"
+  },
+  "11": {
+   "label": "Starting monthly rent / occupied unit ($)",
+   "status": "ASSUMPTION",
+   "rationale": "No verified private resident rent rolls",
+   "ref": "A04"
+  },
+  "12": {
+   "label": "Annual resident rent growth",
+   "status": "ASSUMPTION",
+   "rationale": "Simple rate growth assumption",
+   "ref": "A05"
+  },
+  "13": {
+   "label": "Ancillary $ per occupied unit / month",
+   "status": "ASSUMPTION",
+   "rationale": "Care / ancillary collections assumption",
+   "ref": "A06"
+  },
+  "14": {
+   "label": "Ancillary annual growth",
+   "status": "ASSUMPTION",
+   "rationale": "Underwriting assumption",
+   "ref": "A07"
+  },
+  "15": {
+   "label": "Fixed staffing per available unit / month ($)",
+   "status": "ASSUMPTION",
+   "rationale": "Mandatory staffing coverage model",
+   "ref": "A08"
+  },
+  "16": {
+   "label": "Variable care labor per occupied unit / mo ($)",
+   "status": "ASSUMPTION",
+   "rationale": "Clinical acuity model not disclosed",
+   "ref": "A09"
+  },
+  "17": {
+   "label": "Annual labor cost inflation",
+   "status": "ASSUMPTION",
+   "rationale": "Simple 3.5% cost drift",
+   "ref": "A10"
+  },
+  "18": {
+   "label": "Other fixed expense / unit / month ($)",
+   "status": "ASSUMPTION",
+   "rationale": "Utilities and admin / G&A",
+   "ref": "A11"
+  },
+  "19": {
+   "label": "Other variable expense / revenue",
+   "status": "ASSUMPTION",
+   "rationale": "Food, supplies and resident services",
+   "ref": "A12"
+  },
+  "20": {
+   "label": "Annual fixed expense inflation",
+   "status": "ASSUMPTION",
+   "rationale": "Cost inflation",
+   "ref": "A13"
+  },
+  "21": {
+   "label": "Property tax / insurance / unit / mo ($)",
+   "status": "ASSUMPTION",
+   "rationale": "Tax and loss runs not provided",
+   "ref": "A14"
+  },
+  "22": {
+   "label": "Tax / insurance annual inflation",
+   "status": "ASSUMPTION",
+   "rationale": "Tax reset and liability risk",
+   "ref": "A15"
+  },
+  "23": {
+   "label": "Management fee / revenue",
+   "status": "ASSUMPTION",
+   "rationale": "Illustrative fee not actual Cima fee",
+   "ref": "A16"
+  },
+  "24": {
+   "label": "ACQUISITION PRICE / UNIT ($)",
+   "status": "ASSUMPTION",
+   "rationale": "NOT DISCLOSED. For scenario modeling only.",
+   "ref": "A17"
+  },
+  "25": {
+   "label": "Closing costs / transaction price",
+   "status": "ASSUMPTION",
+   "rationale": "Transfer/legal/title fees",
+   "ref": "A18"
+  },
+  "26": {
+   "label": "Upfront renovation / available unit ($)",
+   "status": "ASSUMPTION",
+   "rationale": "Separate from already completed Katy works",
+   "ref": "A19"
+  },
+  "27": {
+   "label": "Annual maintenance capex reserve / unit ($)",
+   "status": "ASSUMPTION",
+   "rationale": "Paid from property operating cash flow",
+   "ref": "A20"
+  },
+  "28": {
+   "label": "Mortgage LTV",
+   "status": "ASSUMPTION",
+   "rationale": "Subject to lender DSCR, loan terms",
+   "ref": "A21"
+  },
+  "29": {
+   "label": "Fixed coupon / year",
+   "status": "ASSUMPTION",
+   "rationale": "Not a real financing quote",
+   "ref": "A22"
+  },
+  "30": {
+   "label": "Interest-only years",
+   "status": "ASSUMPTION",
+   "rationale": "One-year interest-only approximation",
+   "ref": "A23"
+  },
+  "31": {
+   "label": "Loan amortization years",
+   "status": "ASSUMPTION",
+   "rationale": "Annual amortization after IO",
+   "ref": "A24"
+  },
+  "32": {
+   "label": "Financing fee / loan",
+   "status": "ASSUMPTION",
+   "rationale": "Loan financing fee at close",
+   "ref": "A25"
+  },
+  "33": {
+   "label": "Terminal exit capitalization rate",
+   "status": "ASSUMPTION",
+   "rationale": "Illustrative, not appraised value",
+   "ref": "A26"
+  },
+  "34": {
+   "label": "Exit disposal costs / property sale",
+   "status": "ASSUMPTION",
+   "rationale": "Legal, transfer and brokerage",
+   "ref": "A27"
+  },
+  "35": {
+   "label": "Hold period (years)",
+   "status": "ASSUMPTION",
+   "rationale": "5-year operational turnaround",
+   "ref": "A28"
+  },
+  "36": {
+   "label": "Required levered annual IRR",
+   "status": "ASSUMPTION",
+   "rationale": "Analyst objective, not Cima hurdle",
+   "ref": "A29"
+  },
+  "37": {
+   "label": "LP preferred annual return",
+   "status": "ASSUMPTION",
+   "rationale": "Illustrative fund economics",
+   "ref": "A30"
+  },
+  "38": {
+   "label": "GP promote on residual profits",
+   "status": "ASSUMPTION",
+   "rationale": "Illustrative simplified waterfall",
+   "ref": "A31"
+  },
+  "39": {
+   "label": "LP fraction of starting equity",
+   "status": "ASSUMPTION",
+   "rationale": "Illustrative capital allocation",
+   "ref": "A32"
+  },
+  "40": {
+   "label": "Minimum analyst DSCR threshold",
+   "status": "ASSUMPTION",
+   "rationale": "Analyst liquidity covenant test",
+   "ref": "A33"
+  }
+ }
+}
